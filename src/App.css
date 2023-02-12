@@ -1,0 +1,42 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+*{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.container{
+  max-width: 1000px;
+  margin: auto;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.todo-wrapper{
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  gap: 20px;
+}
+
+.all-todos{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
+
+.todo-card{
+  border: 1px solid black;
+}
+
+.todo-add-button{
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 5px;
+}
