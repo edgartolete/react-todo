@@ -44,7 +44,14 @@ function ToDoList ({toDos, setToDos}) {
         }
     }
 
-
+    function moveToOnProgress(id){
+        toDos.map((todo) =>{
+            if(todo.id === id){
+                todo.status = "onProgress";
+            }
+        })
+        setToDos([...toDos]);
+    }
 
     return (
         <div className='all-todos'>
@@ -57,7 +64,7 @@ function ToDoList ({toDos, setToDos}) {
                     </div>
             </div> } 
             {toDos.map(todo => (todo.status == "new")?
-                    <ToDo  key={todo.id} todo={todo} updateToDo={updateToDo} deleteToDo={deleteToDo}/>
+                    <ToDo  key={todo.id} todo={todo} updateToDo={updateToDo} deleteToDo={deleteToDo} moveToOnProgress={moveToOnProgress}/>
                     : ""
                 )}
         </div>
