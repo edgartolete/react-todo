@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import ToDo from './ToDo';
 
-function ToDos ({toDos, setToDos}) {
+function ToDoList ({toDos, setToDos}) {
 
     let [addButtonState, setAddButtonState] = useState(false)
     let [toDoName, setToDoName] = useState("")
@@ -23,9 +24,22 @@ function ToDos ({toDos, setToDos}) {
         addButtonToggle();
     }
 
-    function updateToDo (){
-        
+    function updateToDo (id, name){
+        toDos.map((todo)=>{
+            if(todo.id === id){
+                todo.name = name;
+            }
+        })
     }
+
+    function deleteToDo (id){
+        let index = toDos.findIndex( todo => todo.id == id)
+        if (index !== -1){
+            toDos.splice(index, 1);
+        }
+    }
+
+    
     return (
         <div className='all-todos'>
             <h2>To Dos</h2>
@@ -37,16 +51,10 @@ function ToDos ({toDos, setToDos}) {
                     </div>
             </div> } 
             {toDos.map(todo => (todo.status == "new")?
-                    <div className='todo-card' key={todo.id} >
-                        <input type="text" value={todo.name} disabled={disabledToken ? "disabled" : ""}/>
-                        <div className='task-buttons'>
-                            <button className='task-button'>Edit</button>
-                            <button className='task-button'>Delete</button>
-                        </div>
-                    </div>
+                    <ToDo  key={todo.id} todo={todo} updateToDo={updateToDo} deleteToDo={deleteToDo}/>
                     : ""
                 )}
         </div>
         )
 }
-export default ToDos;
+export default ToDoList;
