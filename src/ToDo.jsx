@@ -14,7 +14,7 @@ function ToDo ({todo, updateToDo, deleteToDo}) {
         deleteToDo(todo.id)
     }
     return (
-        <div className='todo-card'>
+        <div className='todo-card' key={todo.id}>
             <input type="text" value={name} disabled={disabledToken ? "disabled" : ""} className={disabledToken ? "" : "task-edit"} onChange={e => handleInputName(e)}/>
             <div className='task-buttons'>
                 <button className='task-button' onClick={()=>toggleDisabledToken(disabledToken = !disabledToken)}>{disabledToken ? "Edit" : "Save"}</button>

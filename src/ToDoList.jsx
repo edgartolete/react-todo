@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import ToDo from './ToDo';
+
+
 
 function ToDoList ({toDos, setToDos}) {
 
@@ -30,16 +32,20 @@ function ToDoList ({toDos, setToDos}) {
                 todo.name = name;
             }
         })
+        setToDos([...toDos])
     }
 
     function deleteToDo (id){
         let index = toDos.findIndex( todo => todo.id == id)
+        console.log(index)
         if (index !== -1){
-            toDos.splice(index, 1);
+            toDos.splice(index, 1)
+            setToDos([...toDos]);
         }
     }
 
-    
+
+
     return (
         <div className='all-todos'>
             <h2>To Dos</h2>
